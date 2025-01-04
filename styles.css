@@ -105,21 +105,9 @@ input[type="text"]:focus, textarea:focus {
     box-shadow: 0 0 10px #00ff00;
 }
 
-.suspect-profile img {
-    width: 100%;
-    border-radius: 8px;
-}
-
 .suspect-profile h3 {
     font-size: 1.2em;
     margin: 10px 0;
-}
-
-/* Puzzle Image Styles */
-.evidence-puzzle, .crime-scene-image {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-top: 20px;
 }
 
 /* Textarea Styles */
