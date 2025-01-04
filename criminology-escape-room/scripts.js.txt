@@ -1,78 +1,63 @@
-// Timer Functionality
-let countdownTimer = 60 * 60; // 60 minutes
-let timerDisplay = document.getElementById("countdown");
+// Show and hide stations based on user actions
+let currentStation = 1;
 
-function updateTimer() {
-    let minutes = Math.floor(countdownTimer / 60);
-    let seconds = countdownTimer % 60;
-    timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    if (countdownTimer > 0) {
-        countdownTimer--;
-        setTimeout(updateTimer, 1000);
-    }
+function showStation(stationNumber) {
+    // Hide all stations
+    document.querySelectorAll('.station').forEach(station => station.classList.add('hidden'));
+
+    // Show the selected station
+    document.getElementById(`station${stationNumber}`).classList.remove('hidden');
 }
 
-document.getElementById("startButton").addEventListener("click", function() {
-    document.querySelector("header").classList.add("hidden");
-    document.getElementById("gameSection").classList.remove("hidden");
-    updateTimer();
-});
+document.getElementById('submitStation1').addEventListener('click', function() {
+    const evidence1 = document.getElementById('evidence1').value;
+    const evidence2 = document.getElementById('evidence2').value;
 
-// Station 1: Types of Crime - Scramble Answers
-document.getElementById("submitStation1").addEventListener("click", function() {
-    let answers = [
-        "Theft", "Fraud", "Assault", "Bribery", "Kidnapping", "Burglary"
-    ];
-    let userAnswers = [
-        document.getElementById("answer1").value,
-        document.getElementById("answer2").value,
-        document.getElementById("answer3").value,
-        document.getElementById("answer4").value,
-        document.getElementById("answer5").value,
-        document.getElementById("answer6").value
-    ];
-
-    if (JSON.stringify(answers) === JSON.stringify(userAnswers)) {
-        document.getElementById("station1").classList.add("hidden");
-        document.getElementById("station2").classList.remove("hidden");
+    if (evidence1 && evidence2) {
+        alert("Great job! You've completed Station 1.");
+        currentStation = 2;
+        showStation(currentStation);
     } else {
-        alert("Try again! Ensure all answers are correct.");
+        alert("Please provide answers to both questions.");
     }
 });
 
-// Station 2: Crime Scene Analysis - Evidence Clicked
-document.getElementById("evidence1").addEventListener("click", function() {
-    document.getElementById("evidenceExplanation").value = "Explain why this evidence is important.";
-    document.getElementById("submitStation2").classList.remove("hidden");
-});
+document.getElementById('submitStation2').addEventListener('click', function() {
+    const analysis = document.getElementById('suspectAnalysis').value;
 
-document.getElementById("submitStation2").addEventListener("click", function() {
-    if (document.getElementById("evidenceExplanation").value) {
-        document.getElementById("station2").classList.add("hidden");
-        document.getElementById("station3").classList.remove("hidden");
+    if (analysis) {
+        alert("Nice analysis! You've completed Station 2.");
+        currentStation = 3;
+        showStation(currentStation);
     } else {
-        alert("Please provide an explanation for your evidence.");
+        alert("Please provide your analysis on the suspects.");
     }
 });
 
-// Station 3: Suspect Profiles - Reasoning
-document.getElementById("submitStation3").addEventListener("click", function() {
-    let reasoning = document.getElementById("suspectAnalysis").value;
-    if (reasoning) {
-        document.getElementById("station3").classList.add("hidden");
-        document.getElementById("station4").classList.remove("hidden");
+document.getElementById('submitStation3').addEventListener('click', function() {
+    const clue1 = document.getElementById('clue1').value;
+    const clue2 = document.getElementById('clue2').value;
+
+    if (clue1 && clue2) {
+        alert("Puzzle solved! You've completed Station 3.");
+        currentStation = 4;
+        showStation(currentStation);
     } else {
-        alert("Provide your reasoning for the suspect choice.");
+        alert("Please provide answers to both puzzle questions.");
     }
 });
 
-// Station 4: Cipher Challenge - Decoding
-document.getElementById("submitStation4").addEventListener("click", function() {
-    let decodedMessage = document.getElementById("decodedMessage").value;
-    if (decodedMessage === "This is the last clue. Round to get the rest!") {
-        document.getElementById("station4").classList.add("hidden");
-        document.getElementById("finalMessage").classList.remove("hidden");
+document.getElementById('submitFinalDecision').addEventListener('click', function() {
+    const finalDecision = document.getElementById('finalDecision').value;
+
+    if (finalDecision) {
+        alert(`Your final decision: ${finalDecision}. You've completed the escape room!`);
     } else {
-        alert("Incorrect decoding. Try again!");
+        alert("Please make your final decision about the suspect.");
     }
+});
+
+// Show the first station on page load
+document.addEventListener('DOMContentLoaded', function() {
+    showStation(currentStation);
 });
