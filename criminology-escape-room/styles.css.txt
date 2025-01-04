@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #141414;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+header {
+    z-index: 2;
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    color: white;
+    padding: 30px 50px;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #ee0979;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: #ff6a00;
+}
+
+.hidden {
+    display: none;
+}
+
+.falling-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    z-index: 1;
+    pointer-events: none;
+    animation: fallingCode 4s infinite linear;
+}
+
+@keyframes fallingCode {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.station {
+    z-index: 2;
+    margin: 20px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px;
+    text-align: left;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background: #222;
+    color: white;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #ff6a00;
+}
+
+#finalMessage {
+    background-color: #28a745;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    z-index: 2;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+.suspect-profile {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.suspect-profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.suspect-profile h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.suspect-profile p {
+    font-size: 1rem;
+    color: #ccc;
+}
+

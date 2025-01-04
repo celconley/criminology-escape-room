@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminology Escape Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="falling-background">
+        <!-- Falling Code Animation -->
+    </div>
+
+    <header>
+        <h1>Criminology Escape Room</h1>
+        <p>Welcome, rookie detectives! Solve the puzzles to escape.</p>
+        <button id="startButton">Begin the Challenge</button>
+    </header>
+
+    <section id="gameSection" class="hidden">
+        <!-- Timer -->
+        <div id="timer">Time Left: <span id="countdown">60:00</span></div>
+
+        <!-- Station 1 -->
+        <div id="station1" class="station">
+            <h2>Station 1: Types of Crime</h2>
+            <p>Unscramble the words related to different types of crime:</p>
+            <div id="scrambleAnswers">
+                <input type="text" id="answer1" placeholder="Type of Crime 1">
+                <input type="text" id="answer2" placeholder="Type of Crime 2">
+                <input type="text" id="answer3" placeholder="Type of Crime 3">
+                <input type="text" id="answer4" placeholder="Type of Crime 4">
+                <input type="text" id="answer5" placeholder="Type of Crime 5">
+                <input type="text" id="answer6" placeholder="Type of Crime 6">
+            </div>
+            <button id="submitStation1">Submit Answers</button>
+        </div>
+
+        <!-- Station 2 -->
+        <div id="station2" class="station hidden">
+            <h2>Station 2: Crime Scene Analysis</h2>
+            <p>Click on the evidence in the crime scene and explain why it’s important.</p>
+            <button id="evidence1">Evidence 1</button>
+            <button id="evidence2">Evidence 2</button>
+            <button id="evidence3">Evidence 3</button>
+            <textarea id="evidenceExplanation" placeholder="Explain your findings..."></textarea>
+            <button id="submitStation2" class="hidden">Submit Findings</button>
+        </div>
+
+        <!-- Station 3 -->
+        <div id="station3" class="station hidden">
+            <h2>Station 3: Suspect Profiles</h2>
+            <p>Review the profiles and identify the most likely suspect.</p>
+            <textarea id="suspectAnalysis" placeholder="Your reasoning..."></textarea>
+            <button id="submitStation3" class="hidden">Submit Reasoning</button>
+        </div>
+	<!-- Station 3: Suspect Profiles -->
+	<div id="station3" class="station hidden">
+    	<h2>Station 3: Suspect Profiles</h2>
+    	<p>Review the profiles and identify the most likely suspect.</p>
+
+   	 <!-- Suspect 1: The Business Tycoon -->
+    	<div class="suspect-profile">
+        <img src="images/business_tycoon.jpg" alt="Business Tycoon">
+        <h3>The Business Tycoon</h3>
+        <p>A middle-aged businessman, known for his large charity donations but rumored to be involved in shady practices.</p>
+    </div>
+
+    <!-- Suspect 2: The College Student -->
+    <div class="suspect-profile">
+        <img src="images/college_student.jpg" alt="College Student">
+        <h3>The College Student</h3>
+        <p>A young woman, tech-savvy, who may be hiding a big secret related to security systems and hacking.</p>
+    </div>
+
+    	<!-- Suspect 3: The Retired Detective -->
+    	<div class="suspect-profile">
+        <img src="images/retired_detective.jpg" alt="Retired Detective">
+        <h3>The Retired Detective</h3>
+        <p>An elderly man with a lot of experience, known for solving high-profile cases in his younger years.</p>
+    </div>
+
+   	 <!-- Suspect 4: The Social Media Influencer -->
+   	 <div class="suspect-profile">
+        <img src="images/social_media_influencer.jpg" alt="Social Media Influencer">
+        <h3>The Social Media Influencer</h3>
+        <p>A young woman, confident and popular online, but might have a dark side behind her curated persona.</p>
+    </div>
+
+    <textarea id="suspectAnalysis" placeholder="Your reasoning..."></textarea>
+    <button id="submitStation3" class="hidden">Submit Reasoning</button>
+</div>
+
+
+        <!-- Station 4 -->
+        <div id="station4" class="station hidden">
+            <h2>Station 4: Cipher Challenge</h2>
+            <p>Decode the message below:</p>
+            <div id="cipherMessage">Wklv lv wkh ohvw plfh. Zrxqg wr jhw wkh huhvw!</div>
+            <input type="text" id="decodedMessage" placeholder="Enter decoded message">
+            <button id="submitStation4" class="hidden">Submit Decoded Message</button>
+        </div>
+
+        <div id="finalMessage" class="hidden">
+            <h2>Congratulations, Detective!</h2>
+            <p>You’ve completed the Criminology Escape Room. Great job!</p>
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
