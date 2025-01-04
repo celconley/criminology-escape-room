@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminology Escape Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Criminology Escape Room</h1>
+        <p>Welcome to the Criminology Escape Room! Solve the mystery, gather clues, and identify the culprit!</p>
+    </header>
+
+    <main>
+        <!-- Station 1: The Crime Scene Investigation -->
+        <div id="station1" class="station hidden">
+            <h2>Station 1: Crime Scene Investigation</h2>
+            <p>Examine the crime scene evidence and answer the questions below to collect your first clue!</p>
+            <img src="images/crime_scene.jpg" alt="Crime Scene" class="crime-scene-image">
+            <form id="crimeSceneForm">
+                <label for="evidence1">What object was found at the crime scene?</label>
+                <input type="text" id="evidence1" placeholder="Your answer here">
+                <br>
+                <label for="evidence2">What time did the crime most likely occur?</label>
+                <input type="text" id="evidence2" placeholder="Your answer here">
+                <br>
+                <button type="button" id="submitStation1">Submit Answers</button>
+            </form>
+        </div>
+
+        <!-- Station 2: Suspect Profiles -->
+        <div id="station2" class="station hidden">
+            <h2>Station 2: Suspect Profiles</h2>
+            <p>Review the profiles of the main suspects and try to identify who is most likely involved in the crime.</p>
+
+            <!-- Suspect 1: The Business Tycoon -->
+            <div class="suspect-profile">
+                <img src="images/business_tycoon.jpg" alt="Business Tycoon">
+                <h3>The Business Tycoon</h3>
+                <p>A middle-aged businessman, known for his large charity donations but rumored to be involved in shady practices.</p>
+            </div>
+
+            <!-- Suspect 2: The College Student -->
+            <div class="suspect-profile">
+                <img src="images/college_student.jpg" alt="College Student">
+                <h3>The College Student</h3>
+                <p>A young woman, tech-savvy, who may be hiding a big secret related to security systems and hacking.</p>
+            </div>
+
+            <!-- Suspect 3: The Retired Detective -->
+            <div class="suspect-profile">
+                <img src="images/retired_detective.jpg" alt="Retired Detective">
+                <h3>The Retired Detective</h3>
+                <p>An elderly man with a lot of experience, known for solving high-profile cases in his younger years.</p>
+            </div>
+
+            <!-- Suspect 4: The Social Media Influencer -->
+            <div class="suspect-profile">
+                <img src="images/social_media_influencer.jpg" alt="Social Media Influencer">
+                <h3>The Social Media Influencer</h3>
+                <p>A young woman, confident and popular online, but might have a dark side behind her curated persona.</p>
+            </div>
+
+            <textarea id="suspectAnalysis" placeholder="Your reasoning..."></textarea>
+            <button id="submitStation2" class="hidden">Submit Reasoning</button>
+        </div>
+
+        <!-- Station 3: The Evidence Puzzle -->
+        <div id="station3" class="station hidden">
+            <h2>Station 3: The Evidence Puzzle</h2>
+            <p>Piece together the evidence and match the clues to the suspects. The puzzle will lead you to the next step in solving the crime!</p>
+            <img src="images/evidence_puzzle.jpg" alt="Evidence Puzzle" class="evidence-puzzle">
+            <form id="evidencePuzzleForm">
+                <label for="clue1">What clue links the crime scene to the suspect?</label>
+                <input type="text" id="clue1" placeholder="Your answer here">
+                <br>
+                <label for="clue2">What was the most important piece of evidence in solving the crime?</label>
+                <input type="text" id="clue2" placeholder="Your answer here">
+                <br>
+                <button type="button" id="submitStation3">Submit Puzzle Answers</button>
+            </form>
+        </div>
+
+        <!-- Station 4: Final Decision -->
+        <div id="station4" class="station hidden">
+            <h2>Station 4: The Final Decision</h2>
+            <p>After reviewing the evidence and suspects, make your final decision. Who committed the crime?</p>
+            <form id="finalDecisionForm">
+                <label for="finalDecision">Who is the most likely suspect?</label>
+                <input type="text" id="finalDecision" placeholder="Enter the name of the suspect">
+                <br>
+                <button type="button" id="submitFinalDecision">Submit Final Decision</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Criminology Escape Room. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
