@@ -1,63 +1,106 @@
-// Show and hide stations based on user actions
-let currentStation = 1;
+// Matrix Effect JavaScript
 
-function showStation(stationNumber) {
-    // Hide all stations
-    document.querySelectorAll('.station').forEach(station => station.classList.add('hidden'));
+// Matrix Falling Code Effect
+const matrixEffect = () => {
+    const canvas = document.createElement('canvas');
+    document.body.appendChild(canvas);
+    canvas.style.position = 'absolute';
+    canvas.style.top = 0;
+    canvas.style.left = 0;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    // Show the selected station
-    document.getElementById(`station${stationNumber}`).classList.remove('hidden');
-}
+    const ctx = canvas.getContext('2d');
+    const columns = canvas.width / 20;
+    const drops = Array(columns).fill(1);
 
-document.getElementById('submitStation1').addEventListener('click', function() {
-    const evidence1 = document.getElementById('evidence1').value;
-    const evidence2 = document.getElementById('evidence2').value;
+    const charArr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split("");
+
+    const drawMatrix = () => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00FF00';
+        ctx.font = '20px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = charArr[Math.floor(Math.random() * charArr.length)];
+            ctx.fillText(text, i * 20, drops[i] * 20);
+
+            if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+
+            drops[i]++;
+        }
+    };
+
+    setInterval(drawMatrix, 50);
+};
+
+matrixEffect();
+
+// Reveal Station Functionality
+const stations = document.querySelectorAll('.station');
+let currentStation = 0;
+
+const revealStation = () => {
+    if (currentStation < stations.length) {
+        stations[currentStation].classList.remove('hidden');
+    }
+};
+
+// Handling Station 1 Form Submission
+document.getElementById('submitStation1').addEventListener('click', () => {
+    const evidence1 = document.getElementById('evidence1').value.trim();
+    const evidence2 = document.getElementById('evidence2').value.trim();
 
     if (evidence1 && evidence2) {
-        alert("Great job! You've completed Station 1.");
-        currentStation = 2;
-        showStation(currentStation);
+        alert('You have successfully gathered evidence for Station 1!');
+        currentStation++;
+        revealStation();
     } else {
-        alert("Please provide answers to both questions.");
+        alert('Please fill in both answers before submitting!');
     }
 });
 
-document.getElementById('submitStation2').addEventListener('click', function() {
-    const analysis = document.getElementById('suspectAnalysis').value;
+// Handling Station 2 Form Submission
+document.getElementById('submitStation2').addEventListener('click', () => {
+    const suspectAnalysis = document.getElementById('suspectAnalysis').value.trim();
 
-    if (analysis) {
-        alert("Nice analysis! You've completed Station 2.");
-        currentStation = 3;
-        showStation(currentStation);
+    if (suspectAnalysis) {
+        alert('You have analyzed the suspects!');
+        currentStation++;
+        revealStation();
     } else {
-        alert("Please provide your analysis on the suspects.");
+        alert('Please provide your analysis!');
     }
 });
 
-document.getElementById('submitStation3').addEventListener('click', function() {
-    const clue1 = document.getElementById('clue1').value;
-    const clue2 = document.getElementById('clue2').value;
+// Handling Station 3 Form Submission
+document.getElementById('submitStation3').addEventListener('click', () => {
+    const clue1 = document.getElementById('clue1').value.trim();
+    const clue2 = document.getElementById('clue2').value.trim();
 
     if (clue1 && clue2) {
-        alert("Puzzle solved! You've completed Station 3.");
-        currentStation = 4;
-        showStation(currentStation);
+        alert('You have solved the evidence puzzle!');
+        currentStation++;
+        revealStation();
     } else {
-        alert("Please provide answers to both puzzle questions.");
+        alert('Please fill in both answers before submitting!');
     }
 });
 
-document.getElementById('submitFinalDecision').addEventListener('click', function() {
-    const finalDecision = document.getElementById('finalDecision').value;
+// Handling Final Decision Form Submission
+document.getElementById('submitFinalDecision').addEventListener('click', () => {
+    const finalDecision = document.getElementById('finalDecision').value.trim();
 
     if (finalDecision) {
-        alert(`Your final decision: ${finalDecision}. You've completed the escape room!`);
+        alert('You have made your final decision! The case is closed.');
     } else {
-        alert("Please make your final decision about the suspect.");
+        alert('Please enter your final decision!');
     }
 });
 
-// Show the first station on page load
-document.addEventListener('DOMContentLoaded', function() {
-    showStation(currentStation);
-});
+// Initially reveal the first station
+revealStation();
